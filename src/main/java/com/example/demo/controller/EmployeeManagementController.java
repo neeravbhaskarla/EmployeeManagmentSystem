@@ -20,7 +20,6 @@ public class EmployeeManagementController {
 	public ModelAndView Home() {
 		ModelAndView mv = new ModelAndView("Home.jsp");
 		long EmpCount = repo.count();
-		System.out.println(EmpCount);
 		return mv;
 	}
 	
