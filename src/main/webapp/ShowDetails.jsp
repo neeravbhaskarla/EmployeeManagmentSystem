@@ -117,7 +117,7 @@
             <a href="/">Home</a>
         </div>
         <div class="title-2">
-            <p>Employee Services</p>
+            <p>Employees Details</p>
         </div>
         <div class="title-3">
             <a href="/addDetails">Add Details</a>
