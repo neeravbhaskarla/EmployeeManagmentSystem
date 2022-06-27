@@ -19,7 +19,7 @@ public class EmployeeManagementController {
 	@RequestMapping("/")
 	public ModelAndView Home() {
 		ModelAndView mv = new ModelAndView("Home.jsp");
-		long EmpCount = repo.count();
+//		long EmpCount = repo.count();
 		return mv;
 	}
 	
