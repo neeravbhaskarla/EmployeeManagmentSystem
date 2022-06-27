@@ -7,6 +7,17 @@
     <title>Add Employee Details</title>
 </head>
 <style>
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+    -moz-appearance: textfield;
+    }
     *{
         margin: 0;
         padding: 0;
@@ -24,7 +35,7 @@
         background-color: black;
         padding-top: 15px;
         padding-bottom: 15px;
-        margin-bottom: 80px;
+        margin-bottom: 40px;
         align-items: center;
     }
     .title-1{
@@ -110,6 +121,52 @@
         color:white;
         background-color: black;
     }
+    .form-details{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .input-details p{
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        font-weight: bold;
+        margin: 10px 10px 4px 0px;
+    }
+    .input-details input{
+        margin-bottom: 10px;
+        width: 400px;
+        height: 30px;
+        border: none;
+        border-bottom: 1.5px solid black;
+        border-radius: 0;
+        padding:0;
+        padding-left: 2px;
+        letter-spacing: 0.15rem;
+        transition: all 400ms;
+    }
+    .input-details input:focus{
+        outline: none;
+    }
+    .submit-button{
+        margin-top: 40px;
+    }
+    .submit-button button{
+        background-color: white;
+        border: 2px solid black;
+        width: 100px;
+        height: 40px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        font-weight: bold;
+        transition: color 500ms;
+        cursor: pointer;
+    }
+    .submit-button button:hover{
+        background-color: black;
+        color: white;
+    }
 </style>
 <body>
     <div class="title-bar">
@@ -117,14 +174,65 @@
             <a href="/">Home</a>
         </div>
         <div class="title-2">
-            <p>Employee Services</p>
+            <p>Add Employee Details</p>
         </div>
         <div class="title-3">
             <a href="/showDetails">Show Employees</a>
         </div>
     </div>
-    <div class="input-details">
-
-    </div>
+        <form action="/employees" class="form-details" method="post" id="myForm">
+            <div class="input-details">
+                <div class="emp-id">
+                    <p>ID</p>
+                    <input type="number" name="empId" class="emp-id-input" required>
+                </div>
+                <div class="emp-name">
+                    <p>Name</p>
+                    <input type="text" name="empName" class="emp-name-input" required>
+                </div>
+                <div class="emp-role">
+                    <p>Role</p>
+                    <input type="text" name="empRole" class="emp-role-input" required>
+                </div>
+                <div class="emp-email">
+                    <p>Email</p>
+                    <input type="email" name="empEmail" class="emp-email-input" required>
+                </div>
+                <div class="emp-phno">
+                    <p>Mobile</p>
+                    <input type="number" name="empPhno" class="emp-phone-input" required>
+                </div>
+                <div class="submit-button">
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
 </body>
+<script>
+        var form = document.getElementById('myForm');
+        form.onsubmit = function(event){
+        var xhr = new XMLHttpRequest();
+
+        //Open the request
+        xhr.open('POST','http://localhost:8080/employees')
+        xhr.setRequestHeader("Content-Type", "application/json");
+        var data = {
+            "empId": Number(form.querySelector('input[name="empId"]').value),
+            "empName": form.querySelector('input[name="empName"]').value,
+            "empRole": form.querySelector('input[name="empRole"]').value,
+            "empEmail": form.querySelector('input[name="empEmail"]').value,
+            "empPhno": Number(form.querySelector('input[name="empPhno"]').value)
+        }
+        xhr.send(JSON.stringify(data));
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == XMLHttpRequest.DONE) {
+                form.reset(); //Reset form after AJAX success or do something else
+            }
+        }
+
+        //Fail the onsubmit to avoid page refresh.
+        return false; 
+    }
+</script>
 </html>
