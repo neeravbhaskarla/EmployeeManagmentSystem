@@ -1,7 +1,7 @@
 # Employee Managment System using Spring Boot 
 
 ## Frontend 
-#### Java Server Pages (.jsp)
+#### HTML, CSS and JavaScript.
 
 ## Backend 
-#### Spring Boot: H2 Database, REST, JPA
+#### Spring Boot: H2 Database, REST, JPA.
