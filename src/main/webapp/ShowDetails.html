@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,6 +111,26 @@
         color:white;
         background-color: black;
     }
+    .show-details{
+        display: flex;
+        justify-content: center;
+    }
+    table {
+        border-collapse: collapse;
+        width: 60%;
+        letter-spacing: 0.2rem;
+        font-size: 0.7rem;
+        font-weight: bold;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
 </style>
 <body>
     <div class="title-bar">
@@ -124,7 +145,35 @@
         </div>
     </div>
     <div class="show-details">
-
     </div>
 </body>
+<script>
+    var xhr = new XMLHttpRequest();
+    var detailsDiv = document.querySelector(".show-details");
+    xhr.open('GET','http://localhost:8080/employees', false);
+    xhr.send(null);
+    var res = JSON.parse(xhr.responseText);
+    var empDetails = res._embedded.employees;
+    const tbl = document.createElement('table');
+    const tr = tbl.insertRow();
+    row1 = tr.insertCell()
+    row2 = tr.insertCell()
+    row3 = tr.insertCell()
+    row4 = tr.insertCell()
+    row1.appendChild(document.createTextNode(`ID`));
+    row2.appendChild(document.createTextNode(`NAME`));
+    row3.appendChild(document.createTextNode(`ROLE`));
+    row4.appendChild(document.createTextNode(`EMAIL`));
+    tr.style.backgroundColor = "black"
+    tr.style.color = "white"
+    for (let i = 0; i < res.page.totalElements; i++) {
+        const tr = tbl.insertRow();
+        tr.insertCell().appendChild(document.createTextNode(`${empDetails[i].empId}`));
+        tr.insertCell().appendChild(document.createTextNode(`${empDetails[i].empName}`));
+        tr.insertCell().appendChild(document.createTextNode(`${empDetails[i].empRole}`));
+        tr.insertCell().appendChild(document.createTextNode(`${empDetails[i].empEmail}`));
+        tr.style.fontWeight = "normal";
+    }
+    detailsDiv.appendChild(tbl)
+</script>
 </html>

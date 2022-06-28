@@ -2,15 +2,17 @@ package com.example.demo.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
 
 @Entity
 public class Employee {
 	@Id
+	@GeneratedValue
+	private int id;
 	private int empId;
 	private String empName;
 	private String empRole;
 	private String empEmail;
-	private int empPhno;
 	public int getEmpId() {
 		return empId;
 	}
@@ -35,17 +37,11 @@ public class Employee {
 	public void setEmpEmail(String empEmail) {
 		this.empEmail = empEmail;
 	}
-	public int getEmpPhno() {
-		return empPhno;
-	}
-	public void setEmpPhno(int empPhno) {
-		this.empPhno = empPhno;
-	}
 	
 	@Override
 	public String toString() {
 		return "EmployeeModel [empId=" + empId + ", empName=" + empName + ", empRole=" + empRole + ", empEmail="
-				+ empEmail + ", empPhno=" + empPhno + "]";
+				+ empEmail + "]";
 	}
 
 }

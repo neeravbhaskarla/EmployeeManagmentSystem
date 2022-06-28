@@ -198,10 +198,6 @@
                     <p>Email</p>
                     <input type="email" name="empEmail" class="emp-email-input" required>
                 </div>
-                <div class="emp-phno">
-                    <p>Mobile</p>
-                    <input type="number" name="empPhno" class="emp-phone-input" required>
-                </div>
                 <div class="submit-button">
                     <button type="submit">Submit</button>
                 </div>
@@ -220,8 +216,7 @@
             "empId": Number(form.querySelector('input[name="empId"]').value),
             "empName": form.querySelector('input[name="empName"]').value,
             "empRole": form.querySelector('input[name="empRole"]').value,
-            "empEmail": form.querySelector('input[name="empEmail"]').value,
-            "empPhno": Number(form.querySelector('input[name="empPhno"]').value)
+            "empEmail": form.querySelector('input[name="empEmail"]').value
         }
         xhr.send(JSON.stringify(data));
 

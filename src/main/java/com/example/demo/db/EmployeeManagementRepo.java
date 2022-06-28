@@ -7,5 +7,5 @@ import com.example.demo.model.Employee;
 
 @RepositoryRestResource(collectionResourceRel="employees", path="employees")
 public interface EmployeeManagementRepo extends JpaRepository<Employee, Integer> {
-
+	
 }
