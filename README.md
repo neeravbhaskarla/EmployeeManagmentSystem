@@ -1,15 +1,11 @@
 # Employee Managment System using Spring Boot 
 
 ## Frontend 
-#### HTML, CSS and JavaScript.
+#### React JS
 
 ## Backend 
-#### Spring Boot: H2 Database, REST, JPA.
+#### Spring Boot: PostgreSQL, WebSockets
 
 ## Hosting
-#### Heroku
+#### AWS
 
-<hr/>
-
-#### To visit this website 😊
-[Click Here](https://employeemanagementapp2.herokuapp.com)
